@@ -1,9 +1,8 @@
 package mab.aerospikeworkshop.org;
 
 import com.aerospike.client.AerospikeClient;
-import com.aerospike.client.Bin;
-import com.aerospike.client.Key;
-import com.aerospike.client.policy.WritePolicy;
+import mab.aerospikeworkshop.org.exercises.ExcerciseK2;
+import mab.aerospikeworkshop.org.exercises.Exercise;
 
 public class MainPrograme {
 
@@ -27,12 +26,9 @@ public class MainPrograme {
     }
 
     public void runExercises(AerospikeClient client) {
-        WritePolicy writePolicy = WorkshopAerospikeHelpers.getDefaultWritePolicy();
+        Exercise exercise = new ExcerciseK2(client);
 
-        //start test writing
-        Key key = new Key("test", "users", "mark");
-        Bin bin1 = new Bin("username", "mab");
-
-        client.put(writePolicy, key, bin1);
+        //run exercise
+        exercise.runExercise();
     }
 }
