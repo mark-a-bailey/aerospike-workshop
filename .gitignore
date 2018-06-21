@@ -1,0 +1,12 @@
+# Ignored directories
+.gradle
+.idea
+build
+classes
+out
+
+# Ignored files
+*.iml
+
+#Ignore gradle wrapper jar as we can build this
+gradle/wrapper/*.jar
