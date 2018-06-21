@@ -10,6 +10,9 @@ public class ExcerciseK2 implements Exercise {
 
     private AerospikeClient client;
 
+    public static final String username = "mark2";
+    public static final String password = "123abc";
+
     public ExcerciseK2(AerospikeClient client) {
         this.client = client;
     }
@@ -18,9 +21,12 @@ public class ExcerciseK2 implements Exercise {
         WritePolicy writePolicy = WorkshopAerospikeHelpers.getDefaultWritePolicy();
 
         //start test writing
-        Key key = new Key("test", "users", "mark");
-        Bin bin1 = new Bin("username", "mab");
+        Key key = new Key("test", "users", username);
+        Bin bin1 = new Bin("username", username);
+        Bin bin2 = new Bin("password", password);
+        Bin bin3 = new Bin("lasttweeted", 0);
+        Bin bin4 = new Bin("tweetcount", 0);
 
-        client.put(writePolicy, key, bin1);
+        client.put(writePolicy, key, bin1, bin2, bin3, bin4);
     }
 }
